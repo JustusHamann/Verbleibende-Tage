@@ -23,7 +23,7 @@
 
       const totalDays = Math.floor((end - start) / (1000 * 60 * 60 * 24));
       const passedDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
-      const barLength = 50; // Anzahl der Kästchen insgesamt
+      const barLength = 84; // Anzahl der Kästchen insgesamt
 
       const progressRatio = Math.min(Math.max(passedDays / totalDays, 0), 1); // immer zwischen 0–1
       const greenCount = Math.round(progressRatio * barLength);
