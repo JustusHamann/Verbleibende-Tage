@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Fortschrittsbalken</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        font-size: 1.5rem;
+        background: white;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress"></div>
+
+    <script>
+      const start = new Date("2025-03-17");
+      const end = new Date("2025-06-10");
+      const today = new Date();
+
+      const totalDays = Math.floor((end - start) / (1000 * 60 * 60 * 24));
+      const passedDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
+      const barLength = 50; // Anzahl der Kästchen insgesamt
+
+      const progressRatio = Math.min(Math.max(passedDays / totalDays, 0), 1); // immer zwischen 0–1
+      const greenCount = Math.round(progressRatio * barLength);
+      const grayCount = barLength - greenCount;
+
+      const bar = "🟩".repeat(greenCount) + "⬜️".repeat(grayCount);
+      const percent = Math.round(progressRatio * 100);
+
+      document.getElementById("progress").innerHTML = `${bar}<br>${percent}% erledigt`;
+    </script>
+  </body>
+</html>
