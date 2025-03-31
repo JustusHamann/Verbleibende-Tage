@@ -9,12 +9,22 @@
         text-align: center;
         font-size: 1.5rem;
         background: white;
-        padding: 1rem;
+        padding: 2rem;
+      }
+      #progress-bar {
+        white-space: pre-wrap;
+        line-height: 2.2rem;
+        margin-bottom: 1.5rem;
+      }
+      #percent {
+        font-size: 1.2rem;
+        color: #444;
       }
     </style>
   </head>
   <body>
-    <div id="progress"></div>
+    <div id="progress-bar"></div>
+    <div id="percent"></div>
 
     <script>
       const start = new Date("2025-03-17");
@@ -23,16 +33,24 @@
 
       const totalDays = Math.floor((end - start) / (1000 * 60 * 60 * 24));
       const passedDays = Math.floor((today - start) / (1000 * 60 * 60 * 24));
-      const barLength = 84; // Anzahl der Kästchen insgesamt
+      const barLength = 84;
 
-      const progressRatio = Math.min(Math.max(passedDays / totalDays, 0), 1); // immer zwischen 0–1
+      const progressRatio = Math.min(Math.max(passedDays / totalDays, 0), 1);
       const greenCount = Math.round(progressRatio * barLength);
       const grayCount = barLength - greenCount;
 
       const bar = "🟩".repeat(greenCount) + "⬜️".repeat(grayCount);
+
+      // In 7er-Blöcke umwandeln (Zeilenumbruch nach 7 Zeichen)
+      let formattedBar = "";
+      for (let i = 0; i < bar.length; i += 7) {
+        formattedBar += bar.slice(i, i + 7) + "\n";
+      }
+
       const percent = Math.round(progressRatio * 100);
 
-      document.getElementById("progress").innerHTML = `${bar}<br>${percent}% erledigt`;
+      document.getElementById("progress-bar").textContent = formattedBar;
+      document.getElementById("percent").textContent = `${percent}% erledigt`;
     </script>
   </body>
 </html>
