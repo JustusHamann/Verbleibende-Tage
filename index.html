@@ -7,7 +7,7 @@
     body {
       font-family: sans-serif;
       padding: 20px;
-      background: #f0f0f0;
+      background: #ffffff; /* Weißer Hintergrund */
     }
 
     h1 {
@@ -17,19 +17,19 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(7, 30px);
-      gap: 5px;
+      grid-template-columns: repeat(7, 20px); /* 7 Tage pro Zeile */
+      gap: 3px;
       justify-content: center;
     }
 
     .day {
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      border-radius: 5px;
+      font-size: 14px;
+      border-radius: 3px;
       background-color: #ddd;
     }
 
@@ -55,7 +55,7 @@
     for (let i = 0; i < totalDays; i++) {
       const currentDay = new Date(start);
       currentDay.setDate(start.getDate() + i);
-      currentDay.setHours(0, 0, 0, 0); // Uhrzeit auf 0 setzen
+      currentDay.setHours(0, 0, 0, 0);
 
       const box = document.createElement("div");
       box.classList.add("day");
