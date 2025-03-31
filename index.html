@@ -41,7 +41,6 @@
 </head>
 <body>
 
-  <h1>84-Tage-Fortschritt</h1>
   <div class="grid" id="progressGrid"></div>
 
   <script>
@@ -56,6 +55,7 @@
     for (let i = 0; i < totalDays; i++) {
       const currentDay = new Date(start);
       currentDay.setDate(start.getDate() + i);
+      currentDay.setHours(0, 0, 0, 0); // Uhrzeit auf 0 setzen
 
       const box = document.createElement("div");
       box.classList.add("day");
