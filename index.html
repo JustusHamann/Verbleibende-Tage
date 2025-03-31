@@ -44,7 +44,7 @@
       // In 7er-Blöcke umwandeln (Zeilenumbruch nach 7 Zeichen)
       let formattedBar = "";
       for (let i = 0; i < bar.length; i += 7) {
-        formattedBar += bar.slice(i, i + 7) + "\n";
+        formattedBar += bar.slice(i, i + 7) + "\br";
       }
 
       const percent = Math.round(progressRatio * 100);
